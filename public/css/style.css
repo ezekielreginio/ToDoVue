@@ -1,0 +1,65 @@
+html{
+    font-size: 30px;
+    font-family: Helvetica, sans-serif
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.container{
+    margin: auto;
+    padding: auto;
+    padding-top: 20px;
+    width: 50%;
+    text-align: center;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.edit-task{
+    padding: 10px; 
+    font-size: 20px;
+}
+
+.hr-task {
+    border-top: 1px dotted gray;
+}
+
+.ml-auto{
+    margin-left: auto;
+}
+
+.mr-1{
+    margin-right: 5px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.span-footer{
+    font-size: 20px;
+}
+
+.task-done{
+    text-decoration: line-through;
+}
+
+#input-task{
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#todo-header{
+    margin-bottom: 10px;
+    font-weight: 1000;
+}
+
+#div-tasks{
+    text-align: left;
+}

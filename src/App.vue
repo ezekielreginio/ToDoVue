@@ -1,26 +1,74 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <p id="todo-header">What do you want to do today?</p>
+    <ToDoTaskInput @createTask="onTaskCreate"></ToDoTaskInput>
+    <ToDoTaskList :tasks="tasks" @updateTask="onTaskUpdate" @hoverTask="onTaskHover" @editTask="onTaskEdit" @deleteTask="onTaskDelete"></ToDoTaskList>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ToDoTaskInput from "./components/ToDoTaskInput"
+import ToDoTaskList from "./components/ToDoTaskList"
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data: function(){
+    return {
+      task: "",
+      tasks: [
+        {
+          task: "breakfast",
+          isCompleted: false,
+          isHovered: false,
+          isEditing: false
+        },
+        {
+          task: "lunch",
+          isCompleted: false,
+          isHovered: false,
+          isEditing: false
+        },
+        {
+          task: "dinner",
+          isCompleted: false,
+          isHovered: false,
+          isEditing: false
+        }
+      ]
+    }
+  },
+  methods:{
+    onTaskCreate(task){
+      this.tasks.push({
+          task: task,
+          isCompleted: false,
+          isHovered: false,
+          isEditing: false
+      })
+      console.log(this.tasks)
+    },
+    onTaskUpdate(isChecked, task, index){
+      this.tasks[index].isCompleted = isChecked;
+      this.tasks[index].task = task;
+      this.tasks[index].isEditing = false;
+      console.log(this.tasks)
+    },
+    onTaskHover(isHovered, index){
+      this.tasks[index].isHovered = isHovered;
+    },
+    onTaskEdit(isEditing, index){
+      this.tasks[index].isEditing = isEditing;
+    },
+    onTaskDelete(index){
+      this.tasks.splice(index, 1);
+    }
+  },
+  components:{
+    ToDoTaskInput,
+    ToDoTaskList
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
